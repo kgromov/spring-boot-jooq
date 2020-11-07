@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="Create recipe table" author="kgromov">
+        <createTable tableName="recipe">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cook_time" type="number(11)"/>
+            <column name="prep_time" type="number(11)"/>
+            <column name="servings" type="number(11)"/>
+            <column name="description" type="varchar(255)"/>
+            <column name="url" type="varchar(255)"/>
+            <column name="source" type="varchar(255)"/>
+            <column name="difficulty" type="varchar(50)"/>
+            <column name="directions" type="longtext"/>
+            <column name="image" type="blob"/>
+            <column name="notes_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Create notes table" author="kgromov">
+        <createTable tableName="notes">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="recipe_notes" type="longtext"/>
+            <column name="recipe_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="Add foreign key for recipe table" author="kgromov">
+        <addForeignKeyConstraint baseTableName="recipe"
+                                 baseColumnNames="notes_id"
+                                 constraintName="FK_recipe_note"
+                                 referencedTableName="notes"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="Add foreign key for notes table" author="kgromov">
+        <addForeignKeyConstraint baseTableName="notes"
+                                 baseColumnNames="recipe_id"
+                                 constraintName="FK_note_recipe"
+                                 referencedTableName="recipe"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

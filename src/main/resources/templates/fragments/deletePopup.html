@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Modal -->
+<div th:fragment="deletePopup (title, href)"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="recordDeleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="recordDeleteModalLabel" th:text="${title}"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <a href="#" class="btn btn-primary"
+                   th:href="@{${href}}">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal end -->
+</html>

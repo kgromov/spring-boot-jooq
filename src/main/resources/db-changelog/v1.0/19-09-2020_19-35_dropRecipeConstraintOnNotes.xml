@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+   <changeSet id="Drop FK_note_recipe" author="kgromov">
+       <dropForeignKeyConstraint baseTableName="notes" constraintName="FK_note_recipe"/>
+   </changeSet>
+
+    <changeSet id="Remove recipe_id column" author="kgromov">
+        <dropColumn tableName="notes" columnName="recipe_id" />
+    </changeSet>
+
+</databaseChangeLog>
