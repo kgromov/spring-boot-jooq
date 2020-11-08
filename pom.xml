@@ -87,56 +87,34 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
+            <!--code gen for jpa entities-->
             <plugin>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
                 <version>${jooq.version}</version>
                 <executions>
                     <execution>
-                        <phase>generate-sources</phase>
+                        <id>generate-h2-jpa</id>
+                        <phase>compile</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-
                             <generator>
                                 <database>
                                     <name>org.jooq.meta.extensions.jpa.JPADatabase</name>
-
+                                    <!--<inputSchema>jooq_test</inputSchema>-->
                                     <properties>
                                         <property>
                                             <key>packages</key>
                                             <value>guru.springframework.domain</value>
                                         </property>
-
                                         <property>
-                                            <key>useAttributeConverters</key>
+                                            <key>use-attribute-converters</key>
                                             <value>true</value>
-                                        </property>
-
-                                        <!-- The default schema for unqualified objects:
-
-                                             - public: all unqualified objects are located in the PUBLIC (upper case) schema
-                                             - none: all unqualified objects are located in the default schema (default)
-
-                                             This configuration can be overridden with the schema mapping feature -->
-                                        <property>
-                                            <key>unqualifiedSchema</key>
-                                            <value>PUBLIC</value>
                                         </property>
                                     </properties>
                                 </database>
-
-                               <!-- <generate>
-                                    <records>false</records>
-                                    <globalObjectReferences>false</globalObjectReferences>
-                                </generate>-->
-
                                 <target>
                                     <packageName>guru.springframework.jooq</packageName>
                                     <directory>src/main/java</directory>
@@ -145,29 +123,13 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.20</version>
-                <configuration>
-                    <includes>
-                        <include>**/*IT.java</include>
-                    </includes>
-                    <additionalClasspathElements>
-                        <additionalClasspathElement>${basedir}/target/classes</additionalClasspathElement>
-                    </additionalClasspathElements>
-                    <parallel>none</parallel>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jooq</groupId>
+                        <artifactId>jooq-meta-extensions</artifactId>
+                        <version>${jooq.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
