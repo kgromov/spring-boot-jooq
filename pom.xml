@@ -72,6 +72,11 @@
             <artifactId>jooq</artifactId>
             <version>${jooq.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-meta-extensions-hibernate</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
         <!-- test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -98,24 +103,39 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <jdbc>
-                                <driver>com.mysql.cj.jdbc.Driver</driver>
-                                <url>jdbc:mysql://localhost:3306</url>
-                                <user>root</user>
-                                <password>admin</password>
-                            </jdbc>
 
                             <generator>
                                 <database>
-                                    <includes>.*</includes>
-                                    <excludes></excludes>
-                                    <inputSchema>spring_guru_recipe</inputSchema>
+                                    <name>org.jooq.meta.extensions.jpa.JPADatabase</name>
+
+                                    <properties>
+                                        <property>
+                                            <key>packages</key>
+                                            <value>guru.springframework.domain</value>
+                                        </property>
+
+                                        <property>
+                                            <key>useAttributeConverters</key>
+                                            <value>true</value>
+                                        </property>
+
+                                        <!-- The default schema for unqualified objects:
+
+                                             - public: all unqualified objects are located in the PUBLIC (upper case) schema
+                                             - none: all unqualified objects are located in the default schema (default)
+
+                                             This configuration can be overridden with the schema mapping feature -->
+                                        <property>
+                                            <key>unqualifiedSchema</key>
+                                            <value>PUBLIC</value>
+                                        </property>
+                                    </properties>
                                 </database>
 
-                                <generate>
+                               <!-- <generate>
                                     <records>false</records>
                                     <globalObjectReferences>false</globalObjectReferences>
-                                </generate>
+                                </generate>-->
 
                                 <target>
                                     <packageName>guru.springframework.jooq</packageName>
