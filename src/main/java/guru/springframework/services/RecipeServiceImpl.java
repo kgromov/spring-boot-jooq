@@ -4,15 +4,20 @@ import guru.springframework.commands.RecipeCommand;
 import guru.springframework.converters.RecipeCommandToRecipe;
 import guru.springframework.converters.RecipeToRecipeCommand;
 import guru.springframework.domain.Recipe;
+import guru.springframework.domain.dtos.RecipeCookTime;
+import guru.springframework.domain.dtos.RecipeNotes;
 import guru.springframework.exceptions.NotFoundException;
 import guru.springframework.repositories.RecipeRepository;
+import guru.springframework.repositories.custom.RecipeDtoRepository;
 import guru.springframework.services.profiling.Profiling;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -28,11 +33,18 @@ public class RecipeServiceImpl implements RecipeService {
     private final RecipeCommandToRecipe recipeCommandToRecipe;
     private final RecipeToRecipeCommand recipeToRecipeCommand;
 
+    @Autowired
+    private RecipeDtoRepository recipeDtoRepository;
+
     @Override
     public Set<Recipe> getRecipes() {
         log.debug("I'm in the service");
         Set<Recipe> recipes = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
+        log.info("############### Running JOOQ ################");
+        List<RecipeNotes> recipesWithNote = recipeDtoRepository.getRecipesWithNote();
+        List<RecipeCookTime> recipesCookTime = recipeDtoRepository.getRecipesCookTime();
+        log.info("#############################################");
         return recipes;
     }
 

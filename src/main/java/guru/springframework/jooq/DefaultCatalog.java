@@ -4,10 +4,6 @@
 package guru.springframework.jooq;
 
 
-import java.util.Arrays;
-import java.util.List;
-
-import org.jooq.Schema;
 import org.jooq.impl.CatalogImpl;
 
 
@@ -25,20 +21,9 @@ public class DefaultCatalog extends CatalogImpl {
     public static final DefaultCatalog DEFAULT_CATALOG = new DefaultCatalog();
 
     /**
-     * The schema <code>DEFAULT_SCHEMA</code>.
-     */
-    public final DefaultSchema DEFAULT_SCHEMA = DefaultSchema.DEFAULT_SCHEMA;
-
-    /**
      * No further instances allowed
      */
     private DefaultCatalog() {
         super("");
-    }
-
-    @Override
-    public final List<Schema> getSchemas() {
-        return Arrays.<Schema>asList(
-            DefaultSchema.DEFAULT_SCHEMA);
     }
 }

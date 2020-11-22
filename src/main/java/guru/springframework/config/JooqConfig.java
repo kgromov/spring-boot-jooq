@@ -1,6 +1,7 @@
 package guru.springframework.config;
 
 import org.jooq.SQLDialect;
+import org.jooq.conf.RenderNameCase;
 import org.jooq.impl.DataSourceConnectionProvider;
 import org.jooq.impl.DefaultConfiguration;
 import org.jooq.impl.DefaultDSLContext;
@@ -22,6 +23,7 @@ public class JooqConfig {
         DataSourceConnectionProvider connectionProvider = new DataSourceConnectionProvider(dataSourceProxy);
         DefaultConfiguration jooqConfiguration = new DefaultConfiguration();
         jooqConfiguration.set(connectionProvider);
+        jooqConfiguration.settings().setRenderNameCase(RenderNameCase.AS_IS);
         jooqConfiguration.set(new DefaultExecuteListenerProvider(exceptionTranslator));
 
         jooqConfiguration.set(SQLDialect.MYSQL);

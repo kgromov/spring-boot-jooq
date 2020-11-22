@@ -103,7 +103,7 @@
                             <generator>
                                 <database>
                                     <name>org.jooq.meta.extensions.jpa.JPADatabase</name>
-                                    <!--<inputSchema>jooq_test</inputSchema>-->
+                                    <!--<inputSchema>spring_guru_recipe</inputSchema>-->
                                     <properties>
                                         <property>
                                             <key>packages</key>
@@ -115,6 +115,12 @@
                                         </property>
                                     </properties>
                                 </database>
+
+                                <generate>
+                                    <records>false</records>
+                                    <globalObjectReferences>false</globalObjectReferences>
+                                </generate>
+
                                 <target>
                                     <packageName>guru.springframework.jooq</packageName>
                                     <directory>src/main/java</directory>

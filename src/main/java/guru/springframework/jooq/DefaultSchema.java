@@ -33,36 +33,6 @@ public class DefaultSchema extends SchemaImpl {
     public static final DefaultSchema DEFAULT_SCHEMA = new DefaultSchema();
 
     /**
-     * The table <code>CATEGORY</code>.
-     */
-    public final Category CATEGORY = Category.CATEGORY;
-
-    /**
-     * The table <code>INGREDIENT</code>.
-     */
-    public final Ingredient INGREDIENT = Ingredient.INGREDIENT;
-
-    /**
-     * The table <code>NOTES</code>.
-     */
-    public final Notes NOTES = Notes.NOTES;
-
-    /**
-     * The table <code>RECIPE</code>.
-     */
-    public final Recipe RECIPE = Recipe.RECIPE;
-
-    /**
-     * The table <code>RECIPE_CATEGORY</code>.
-     */
-    public final RecipeCategory RECIPE_CATEGORY = RecipeCategory.RECIPE_CATEGORY;
-
-    /**
-     * The table <code>UNIT_OF_MEASURE</code>.
-     */
-    public final UnitOfMeasure UNIT_OF_MEASURE = UnitOfMeasure.UNIT_OF_MEASURE;
-
-    /**
      * No further instances allowed
      */
     private DefaultSchema() {
