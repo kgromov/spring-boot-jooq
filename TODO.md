@@ -3,6 +3,8 @@
 - [x] Integrate with SpringBoot (use the same DataSource)
 - [x] Configure to generate table classes for 1 scheme
 - [x] Generate classes from JPA entities
+- [x] Configure with gradle - only by schema; does not work for entities
+- [x] Try with atlas project
 - [ ] Look into more configuration: integration with Liquibase, etc
-- [ ] Configure with gradle
-- [ ] Try with atlas project
+- [ ] Tests - seems there are jooq mock
+- [ ] SQL functions

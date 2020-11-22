@@ -33,17 +33,14 @@ public class RecipeServiceImpl implements RecipeService {
     private final RecipeCommandToRecipe recipeCommandToRecipe;
     private final RecipeToRecipeCommand recipeToRecipeCommand;
 
-    @Autowired
-    private RecipeDtoRepository recipeDtoRepository;
-
     @Override
     public Set<Recipe> getRecipes() {
         log.debug("I'm in the service");
         Set<Recipe> recipes = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
         log.info("############### Running JOOQ ################");
-        List<RecipeNotes> recipesWithNote = recipeDtoRepository.getRecipesWithNote();
-        List<RecipeCookTime> recipesCookTime = recipeDtoRepository.getRecipesCookTime();
+        List<RecipeNotes> recipesWithNote = recipeRepository.getRecipesWithNote();
+        List<RecipeCookTime> recipesCookTime = recipeRepository.getRecipesCookTime();
         log.info("#############################################");
         return recipes;
     }
