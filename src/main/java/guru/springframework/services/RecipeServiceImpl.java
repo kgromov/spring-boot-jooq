@@ -4,10 +4,12 @@ import guru.springframework.commands.RecipeCommand;
 import guru.springframework.converters.RecipeCommandToRecipe;
 import guru.springframework.converters.RecipeToRecipeCommand;
 import guru.springframework.domain.Recipe;
+import guru.springframework.domain.dtos.CategoryRecipes;
 import guru.springframework.domain.dtos.RecipeCookTime;
 import guru.springframework.domain.dtos.RecipeNotes;
 import guru.springframework.exceptions.NotFoundException;
 import guru.springframework.repositories.RecipeRepository;
+import guru.springframework.repositories.custom.CategoryDtoRepository;
 import guru.springframework.repositories.custom.RecipeDtoRepository;
 import guru.springframework.services.profiling.Profiling;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +34,8 @@ public class RecipeServiceImpl implements RecipeService {
     private final RecipeRepository recipeRepository;
     private final RecipeCommandToRecipe recipeCommandToRecipe;
     private final RecipeToRecipeCommand recipeToRecipeCommand;
+    @Autowired
+    private CategoryDtoRepository categoryDtoRepository;
 
     @Override
     public Set<Recipe> getRecipes() {
@@ -40,7 +44,13 @@ public class RecipeServiceImpl implements RecipeService {
         recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
         log.info("############### Running JOOQ ################");
         List<RecipeNotes> recipesWithNote = recipeRepository.getRecipesWithNote();
+        log.info("First recipesWithNote = {}", recipesWithNote.get(0));
         List<RecipeCookTime> recipesCookTime = recipeRepository.getRecipesCookTime();
+        log.info("First recipesCookTime = {}", recipesCookTime.get(0));
+        List<CategoryRecipes> allRecipesByCategory = categoryDtoRepository.getAllRecipesByCategory();
+        log.info("First categoryRecipe = {}", allRecipesByCategory.get(0));
+        log.info("recipes clazz = {}", allRecipesByCategory.get(0).getRecipes().getClass());
+        Long countOfRecipe = allRecipesByCategory.get(0).getRecipes();
         log.info("#############################################");
         return recipes;
     }

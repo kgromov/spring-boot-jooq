@@ -1,5 +1,8 @@
 package guru.springframework.domain;
 
+import guru.springframework.domain.dtos.RecipeCookTime;
+import guru.springframework.domain.dtos.RecipeNotes;
+import guru.springframework.repositories.custom.RecipeDtoRepositoryImpl;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +17,25 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "recipe")
+// can be applier both on Repository and Entity levels
+@SqlResultSetMapping(name = RecipeDtoRepositoryImpl.RECIPE_COOK_TIME_MAPPER,
+        classes = @ConstructorResult(
+                targetClass = RecipeCookTime.class,
+                columns = {
+                        @ColumnResult(name = "id", type = Long.class),
+                        @ColumnResult(name = "description", type = String.class),
+                        @ColumnResult(name = "prepTime", type = Integer.class),
+                        @ColumnResult(name = "cookTime", type = Integer.class)
+                }))
+@SqlResultSetMapping(name = RecipeDtoRepositoryImpl.RECIPE_NOTES_MAPPER,
+        classes = @ConstructorResult(
+                targetClass = RecipeNotes.class,
+                columns = {
+                        @ColumnResult(name = "id", type = Long.class),
+                        @ColumnResult(name = "description", type = String.class),
+                        @ColumnResult(name = "recipeNotes", type = String.class),
+                        @ColumnResult(name = "difficulty", type = String.class)
+                }))
 public class Recipe {
 
     @Id

@@ -30,7 +30,6 @@ public class JooqDemo {
                 .join(notes)
                 .on(recipe.NOTES_ID.equal(notes.ID))
                 .groupBy(notes.ID);
-        Query jooqQuery = sql;
         log.info("Sql query = {}", sql.toString());
         Result<Record3<Long, String, Integer>> fetch = sql.fetch();
     }

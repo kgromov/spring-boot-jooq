@@ -59,9 +59,10 @@ public class TimeLoggerAspect {
     public Object profileRepositories(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.nanoTime();
         Object result = joinPoint.proceed(joinPoint.getArgs());
-        long endTime = getEndTimeConvertedToTimeUnit(startTime, TimeUnit.MICROSECONDS);
+        TimeUnit timeUnit = TimeUnit.MILLISECONDS;
+        long endTime = getEndTimeConvertedToTimeUnit(startTime, timeUnit);
         String message = String.format("Method: '%s' execution time took %d %s",
-                joinPoint.getSignature().toLongString(), endTime, timeunits.get(TimeUnit.MICROSECONDS));
+                joinPoint.getSignature().toLongString(), endTime, timeunits.get(timeUnit));
         log(LogLevel.DEBUG, () -> message);
         return result;
     }

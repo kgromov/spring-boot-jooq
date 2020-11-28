@@ -12,27 +12,11 @@ import javax.persistence.*;
 import javax.persistence.Query;
 import java.util.List;
 
-// can be applier both on Repository and Entity levels
-@SqlResultSetMapping(name = "RecipeCookTime",
-        classes = @ConstructorResult(
-                targetClass = RecipeCookTime.class,
-                columns = {
-                        @ColumnResult(name = "id"),
-                        @ColumnResult(name = "description"),
-                        @ColumnResult(name = "prepTime"),
-                        @ColumnResult(name = "cookTime")
-                }))
-@SqlResultSetMapping(name = "RecipeNotes",
-        classes = @ConstructorResult(
-                targetClass = RecipeNotes.class,
-                columns = {
-                        @ColumnResult(name = "id"),
-                        @ColumnResult(name = "description"),
-                        @ColumnResult(name = "recipeNotes"),
-                        @ColumnResult(name = "difficulty")
-                }))
 @Repository
 public class RecipeDtoRepositoryImpl implements RecipeDtoRepository {
+    public static final String RECIPE_COOK_TIME_MAPPER = "RecipeCookTime";
+    public static final String RECIPE_NOTES_MAPPER = "RecipeNotes";
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -43,10 +27,9 @@ public class RecipeDtoRepositoryImpl implements RecipeDtoRepository {
     public List<RecipeCookTime> getRecipesCookTime() {
         Recipe recipe = Recipe.RECIPE;
         SelectJoinStep<Record4<Long, String, Integer, Integer>> jooqQuery = dslContext
-                .select(recipe.ID, recipe.DESCRIPTION, recipe.PREP_TIME, recipe.COOK_TIME)
+                .select(recipe.ID, recipe.DESCRIPTION, recipe.PREP_TIME.as("prepTime"), recipe.COOK_TIME.as("cookTime"))
                 .from(recipe);
-        List<RecipeCookTime> recipesCookTime = getResultList(jooqQuery);
-        return recipesCookTime;
+        return getResultList(jooqQuery, RECIPE_COOK_TIME_MAPPER);
     }
 
     @Override
@@ -54,16 +37,15 @@ public class RecipeDtoRepositoryImpl implements RecipeDtoRepository {
         Recipe recipe = Recipe.RECIPE;
         Notes notes = Notes.NOTES;
         SelectOnConditionStep<Record4<Long, String, String, String>> jooqQuery = dslContext
-                .select(recipe.ID, recipe.DESCRIPTION, notes.RECIPE_NOTES, recipe.DIFFICULTY)
+                .select(recipe.ID, recipe.DESCRIPTION, notes.RECIPE_NOTES.as("recipeNotes"), recipe.DIFFICULTY)
                 .from(recipe)
                 .join(notes).on(recipe.NOTES_ID.equal(notes.ID));
-        List<RecipeNotes> recipeNotes = getResultList(jooqQuery);
-        return recipeNotes;
+        return getResultList(jooqQuery, RECIPE_NOTES_MAPPER);
     }
 
     @SuppressWarnings("unchecked")
-    private <T> List<T> getResultList(org.jooq.Query jooqQuery) {
-        Query hibernateQuery = entityManager.createNativeQuery(jooqQuery.getSQL());
+    private <T> List<T> getResultList(org.jooq.Query jooqQuery, String sqlResultMapperName) {
+        Query hibernateQuery = entityManager.createNativeQuery(jooqQuery.getSQL(), sqlResultMapperName);
         setBindParameterValues(hibernateQuery, jooqQuery);
         return (List<T>) hibernateQuery.getResultList();
     }
