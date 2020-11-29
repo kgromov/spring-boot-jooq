@@ -36,7 +36,6 @@ public class TimeLoggerAspect {
     }
 
     @Around("@annotation(guru.springframework.services.profiling.Profiling)")
-//    @Around("execution(* guru.springframework.repositories.*.*(..))")
     public Object profile(ProceedingJoinPoint joinPoint) throws Throwable {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
@@ -55,7 +54,8 @@ public class TimeLoggerAspect {
         return joinPoint.proceed(joinPoint.getArgs());
     }
 
-    @Around("execution(* guru.springframework.repositories.*.*(..))")
+    @Around("within(guru.springframework.repositories.custom.JooqSqlResultMapperRepository+) ||" +
+            "within(org.springframework.data.repository.CrudRepository+)")
     public Object profileRepositories(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.nanoTime();
         Object result = joinPoint.proceed(joinPoint.getArgs());
