@@ -18,6 +18,9 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import javax.sql.DataSource;
 
+/**
+ * Seems it's better to combine with DBConfig or define all required for jooq beans for both purposes
+ */
 //@Configuration
 public class JooqConfig_V2 {
     @Autowired

@@ -50,6 +50,8 @@ public class RecipeServiceImpl implements RecipeService {
         List<RecipeCookTime> recipesCookTime = recipeDtoRepository.getRecipesCookTime();
         log.info("First recipesCookTime = {}", recipesCookTime.get(0));
         List<CategoryRecipes> allRecipesByCategory = categoryDtoRepository.getAllRecipesByCategory();
+        CategoryRecipes recipes1 = categoryDtoRepository.getAllRecipesByCategoryRecordMapper().get(0);
+        CategoryRecipes recipes2 = categoryDtoRepository.getAllRecipesByCategoryFetchTo().get(0);
         log.info("First categoryRecipe = {}", allRecipesByCategory.get(0));
         log.info("recipes clazz = {}", allRecipesByCategory.get(0).getRecipes().getClass());
         Long countOfRecipe = allRecipesByCategory.get(0).getRecipes();

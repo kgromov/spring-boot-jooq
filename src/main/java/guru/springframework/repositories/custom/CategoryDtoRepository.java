@@ -7,4 +7,8 @@ import java.util.List;
 public interface CategoryDtoRepository {
 
     List<CategoryRecipes> getAllRecipesByCategory();
+
+    List<CategoryRecipes> getAllRecipesByCategoryRecordMapper();
+
+    List<CategoryRecipes> getAllRecipesByCategoryFetchTo();
 }
