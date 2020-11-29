@@ -11,5 +11,5 @@ import java.util.concurrent.TimeUnit;
  * Created by jt on 6/13/17.
  */
 @Profiling(timeunit = TimeUnit.MICROSECONDS)
-public interface RecipeRepository extends CrudRepository<Recipe, Long>, RecipeDtoRepository {
+public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 }

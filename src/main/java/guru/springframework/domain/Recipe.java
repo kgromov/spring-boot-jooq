@@ -17,7 +17,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "recipe")
-// can be applier both on Repository and Entity levels
+// works only on Entity level
 @SqlResultSetMapping(name = RecipeDtoRepositoryImpl.RECIPE_COOK_TIME_MAPPER,
         classes = @ConstructorResult(
                 targetClass = RecipeCookTime.class,

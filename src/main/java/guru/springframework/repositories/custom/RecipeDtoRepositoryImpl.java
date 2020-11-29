@@ -4,24 +4,25 @@ import guru.springframework.domain.dtos.RecipeCookTime;
 import guru.springframework.domain.dtos.RecipeNotes;
 import guru.springframework.jooq.tables.Notes;
 import guru.springframework.jooq.tables.Recipe;
-import org.jooq.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.jooq.Record4;
+import org.jooq.SelectJoinStep;
+import org.jooq.SelectOnConditionStep;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.*;
-import javax.persistence.Query;
 import java.util.List;
 
+/**
+ * Impl is required suffix is using fragment as extension to CRUD JPA repository
+ * Since fragments are not repositories
+ * by themselves, Spring relies on this mechanism to find the fragment
+ * implementation.
+ * So even @Repository could be omitted.
+ * Seems it would be better to introduce some @Fragment annotation
+ */
 @Repository
-public class RecipeDtoRepositoryImpl implements RecipeDtoRepository {
+public class RecipeDtoRepositoryImpl extends JooqSqlResultMapperRepository implements RecipeDtoRepository {
     public static final String RECIPE_COOK_TIME_MAPPER = "RecipeCookTime";
     public static final String RECIPE_NOTES_MAPPER = "RecipeNotes";
-
-    @PersistenceContext
-    private EntityManager entityManager;
-
-    @Autowired
-    private DSLContext dslContext;
 
     @Override
     public List<RecipeCookTime> getRecipesCookTime() {
@@ -41,19 +42,5 @@ public class RecipeDtoRepositoryImpl implements RecipeDtoRepository {
                 .from(recipe)
                 .join(notes).on(recipe.NOTES_ID.equal(notes.ID));
         return getResultList(jooqQuery, RECIPE_NOTES_MAPPER);
-    }
-
-    @SuppressWarnings("unchecked")
-    private <T> List<T> getResultList(org.jooq.Query jooqQuery, String sqlResultMapperName) {
-        Query hibernateQuery = entityManager.createNativeQuery(jooqQuery.getSQL(), sqlResultMapperName);
-        setBindParameterValues(hibernateQuery, jooqQuery);
-        return (List<T>) hibernateQuery.getResultList();
-    }
-
-    private static void setBindParameterValues(Query hibernateQuery, org.jooq.Query jooqQuery) {
-        List<Object> values = jooqQuery.getBindValues();
-        for (int i = 0; i < values.size(); i++) {
-            hibernateQuery.setParameter(i + 1, values.get(i));
-        }
     }
 }

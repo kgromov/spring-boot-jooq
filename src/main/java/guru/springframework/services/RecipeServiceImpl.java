@@ -36,6 +36,8 @@ public class RecipeServiceImpl implements RecipeService {
     private final RecipeToRecipeCommand recipeToRecipeCommand;
     @Autowired
     private CategoryDtoRepository categoryDtoRepository;
+    @Autowired
+    private RecipeDtoRepository recipeDtoRepository;
 
     @Override
     public Set<Recipe> getRecipes() {
@@ -43,9 +45,9 @@ public class RecipeServiceImpl implements RecipeService {
         Set<Recipe> recipes = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
         log.info("############### Running JOOQ ################");
-        List<RecipeNotes> recipesWithNote = recipeRepository.getRecipesWithNote();
+        List<RecipeNotes> recipesWithNote = recipeDtoRepository.getRecipesWithNote();
         log.info("First recipesWithNote = {}", recipesWithNote.get(0));
-        List<RecipeCookTime> recipesCookTime = recipeRepository.getRecipesCookTime();
+        List<RecipeCookTime> recipesCookTime = recipeDtoRepository.getRecipesCookTime();
         log.info("First recipesCookTime = {}", recipesCookTime.get(0));
         List<CategoryRecipes> allRecipesByCategory = categoryDtoRepository.getAllRecipesByCategory();
         log.info("First categoryRecipe = {}", allRecipesByCategory.get(0));
