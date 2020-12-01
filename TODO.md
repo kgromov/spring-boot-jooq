@@ -5,6 +5,6 @@
 - [x] Generate classes from JPA entities
 - [x] Configure with gradle - only by schema; does not work for entities
 - [x] Try with atlas project
-- [ ] Look into more configuration: integration with Liquibase, etc
+- [!] Look into more configuration: integration with Liquibase, etc - works with org.jooq.trial which is not maven central
 - [ ] Tests - seems there are jooq mock
 - [x] SQL functions

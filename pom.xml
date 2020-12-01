@@ -113,6 +113,17 @@
                                             <key>use-attribute-converters</key>
                                             <value>true</value>
                                         </property>
+                                        <!-- The current versions of jOOQ use Hibernate behind the scenes
+                                        to generate an in-memory H2 database from which to reverse engineer jOOQ code.
+                                        In order to influence Hibernate's schema generation,
+                                        Hibernate specific flags can be passed to MetadataSources.
+                                        All properties that are prefixed with hibernate. or javax.persistence. will be passed along to Hibernate.
+                                        As an example:
+                                        <property>
+                                            <key>hibernate.physical_naming_strategy</key>
+                                            <value>org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy</value>
+                                        </property>
+                                        -->
                                     </properties>
                                 </database>
 
