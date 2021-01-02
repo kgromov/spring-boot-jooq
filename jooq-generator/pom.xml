@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring5-recipe-app</artifactId>
+        <groupId>guru.springframework</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>jooq-generator</artifactId>
+    <build>
+        <plugins>
+            <!--code gen for jpa entities-->
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <version>${jooq.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-h2-jpa</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <generator>
+                                <database>
+                                    <name>org.jooq.meta.extensions.jpa.JPADatabase</name>
+                                    <!--<inputSchema>spring_guru_recipe</inputSchema>-->
+                                    <properties>
+                                        <property>
+                                            <key>packages</key>
+                                            <value>com.entities.domain</value>
+                                        </property>
+                                        <property>
+                                            <key>use-attribute-converters</key>
+                                            <value>true</value>
+                                        </property>
+                                    </properties>
+                                </database>
+
+                                <generate>
+                                    <records>false</records>
+                                    <globalObjectReferences>false</globalObjectReferences>
+                                </generate>
+
+                                <target>
+                                    <packageName>guru.springframework.jooq</packageName>
+                                    <directory>src/main/java</directory>
+                                </target>
+                            </generator>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jooq</groupId>
+                        <artifactId>jooq-meta-extensions</artifactId>
+                        <version>${jooq.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>guru.springframework</groupId>
+            <artifactId>entities</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+</project>
