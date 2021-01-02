@@ -1,11 +1,16 @@
 package com.entities.domain;
 
+import com.entities.domain.dtos.RecipeCookTime;
+import com.entities.domain.dtos.RecipeNotes;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
+import static com.entities.domain.Recipe.RECIPE_COOK_TIME_MAPPER;
+import static com.entities.domain.Recipe.RECIPE_NOTES_MAPPER;
 
 /**
  * Created by jt on 6/13/17.
@@ -14,7 +19,28 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "recipe")
+// works only on Entity level
+@SqlResultSetMapping(name = RECIPE_COOK_TIME_MAPPER,
+        classes = @ConstructorResult(
+                targetClass = RecipeCookTime.class,
+                columns = {
+                        @ColumnResult(name = "id", type = Long.class),
+                        @ColumnResult(name = "description", type = String.class),
+                        @ColumnResult(name = "prepTime", type = Integer.class),
+                        @ColumnResult(name = "cookTime", type = Integer.class)
+                }))
+@SqlResultSetMapping(name = RECIPE_NOTES_MAPPER,
+        classes = @ConstructorResult(
+                targetClass = RecipeNotes.class,
+                columns = {
+                        @ColumnResult(name = "id", type = Long.class),
+                        @ColumnResult(name = "description", type = String.class),
+                        @ColumnResult(name = "recipeNotes", type = String.class),
+                        @ColumnResult(name = "difficulty", type = String.class)
+                }))
 public class Recipe {
+    public static final String RECIPE_COOK_TIME_MAPPER = "RecipeCookTime";
+    public static final String RECIPE_NOTES_MAPPER = "RecipeNotes";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

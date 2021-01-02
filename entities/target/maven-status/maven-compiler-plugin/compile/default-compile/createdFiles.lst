@@ -1,9 +1,0 @@
-com\entities\domain\Category.class
-com\entities\domain\Difficulty.class
-com\entities\domain\Notes.class
-com\entities\domain\dtos\RecipeNotes.class
-com\entities\domain\dtos\CategoryRecipes.class
-com\entities\domain\dtos\RecipeCookTime.class
-com\entities\domain\Recipe.class
-com\entities\domain\Ingredient.class
-com\entities\domain\UnitOfMeasure.class

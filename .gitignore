@@ -141,3 +141,4 @@ Desktop.ini
 .eslintcache
 /entities/target/
 /jooq-generator/target/
+/application/target/
