@@ -8,7 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>jooq-generator</module>
-        <module>entities</module>
         <module>application</module>
     </modules>
     <packaging>pom</packaging>

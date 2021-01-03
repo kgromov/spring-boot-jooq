@@ -20,7 +20,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan(basePackages = "guru.springframework")
+@ComponentScan(basePackages = "com.recipe.application")
 @EnableTransactionManagement
 public class DataBaseConfig {
     @Autowired
@@ -70,7 +70,7 @@ public class DataBaseConfig {
 //        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         return builder
                 .dataSource(db)
-                .packages("com.entities.domain")
+                .packages("com.recipe.application.domain")
                 .persistenceUnit("mySql")
 //                .properties(properties)
                 .build();

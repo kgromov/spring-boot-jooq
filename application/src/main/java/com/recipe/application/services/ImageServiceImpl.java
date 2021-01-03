@@ -1,6 +1,6 @@
 package com.recipe.application.services;
 
-import com.entities.domain.Recipe;
+import com.recipe.application.domain.Recipe;
 import com.recipe.application.exceptions.NotFoundException;
 import com.recipe.application.repositories.RecipeRepository;
 import lombok.RequiredArgsConstructor;

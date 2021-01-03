@@ -1,6 +1,6 @@
 package com.recipe.application.converters;
 
-import com.entities.domain.UnitOfMeasure;
+import com.recipe.application.domain.UnitOfMeasure;
 import com.recipe.application.commands.UnitOfMeasureCommand;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;

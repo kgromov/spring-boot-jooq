@@ -1,6 +1,6 @@
 package com.recipe.application.services;
 
-import com.entities.domain.Recipe;
+import com.recipe.application.domain.Recipe;
 import com.recipe.application.commands.RecipeCommand;
 
 import java.util.Set;

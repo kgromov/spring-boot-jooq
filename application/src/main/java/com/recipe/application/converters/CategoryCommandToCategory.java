@@ -1,6 +1,6 @@
 package com.recipe.application.converters;
 
-import com.entities.domain.Category;
+import com.recipe.application.domain.Category;
 import com.recipe.application.commands.CategoryCommand;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;

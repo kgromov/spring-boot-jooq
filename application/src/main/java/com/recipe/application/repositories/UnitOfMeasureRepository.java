@@ -1,6 +1,6 @@
 package com.recipe.application.repositories;
 
-import com.entities.domain.UnitOfMeasure;
+import com.recipe.application.domain.UnitOfMeasure;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

@@ -1,7 +1,7 @@
-package com.entities.domain;
+package com.recipe.application.domain;
 
-import com.entities.domain.dtos.RecipeCookTime;
-import com.entities.domain.dtos.RecipeNotes;
+import com.recipe.application.domain.dtos.RecipeCookTime;
+import com.recipe.application.domain.dtos.RecipeNotes;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,8 +9,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.entities.domain.Recipe.RECIPE_COOK_TIME_MAPPER;
-import static com.entities.domain.Recipe.RECIPE_NOTES_MAPPER;
+import static com.recipe.application.domain.Recipe.RECIPE_COOK_TIME_MAPPER;
+import static com.recipe.application.domain.Recipe.RECIPE_NOTES_MAPPER;
 
 /**
  * Created by jt on 6/13/17.

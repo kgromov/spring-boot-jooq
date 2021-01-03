@@ -1,4 +1,4 @@
-package com.entities.domain;
+package com.recipe.application.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

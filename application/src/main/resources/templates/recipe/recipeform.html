@@ -3,7 +3,7 @@
 <head th:include="head::bootstrap (title ='Recipe Form')">
 </head>
 <body>
-<!--/*@thymesVar id="recipe" type="com.entities.domain.Recipe"*/-->
+<!--/*@thymesVar id="recipe" type="com.recipe.application.domain.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -79,7 +79,7 @@
                                 <div class="col-md-3 form-group">
                                     <label>Difficulty:</label>
                                     <select class="form-control" th:field="*{difficulty}">
-                                        <option th:each="difficultyValue : ${T(com.entities.domain.Difficulty).values()}"
+                                        <option th:each="difficultyValue : ${T(com.recipe.application.domain.Difficulty).values()}"
                                                 th:value="${difficultyValue.name()}"
                                                 th:text="${difficultyValue.name()}"
                                         >val

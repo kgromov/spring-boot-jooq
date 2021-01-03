@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-@EntityScan("com.entities.domain")
+@EntityScan("com.recipe.application.domain")
 public class Spring5RecipeAppApplication {
 
     public static void main(String[] args) {

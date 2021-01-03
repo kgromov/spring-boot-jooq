@@ -1,9 +1,10 @@
 package com.recipe.application.repositories.custom;
 
-import com.entities.domain.dtos.RecipeCookTime;
-import com.entities.domain.dtos.RecipeNotes;
-import guru.springframework.jooq.tables.Notes;
-import guru.springframework.jooq.tables.Recipe;
+
+import com.recipe.application.domain.dtos.RecipeCookTime;
+import com.recipe.application.domain.dtos.RecipeNotes;
+import com.recipe.application.jooq.tables.Notes;
+import com.recipe.application.jooq.tables.Recipe;
 import org.jooq.Record4;
 import org.jooq.SelectJoinStep;
 import org.jooq.SelectOnConditionStep;
@@ -11,8 +12,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.entities.domain.Recipe.RECIPE_COOK_TIME_MAPPER;
-import static com.entities.domain.Recipe.RECIPE_NOTES_MAPPER;
+import static com.recipe.application.domain.Recipe.RECIPE_COOK_TIME_MAPPER;
+import static com.recipe.application.domain.Recipe.RECIPE_NOTES_MAPPER;
 
 /**
  * Impl is required suffix is using fragment as extension to CRUD JPA repository

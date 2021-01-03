@@ -1,6 +1,6 @@
 package com.recipe.application.commands;
 
-import com.entities.domain.Difficulty;
+import com.recipe.application.domain.Difficulty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

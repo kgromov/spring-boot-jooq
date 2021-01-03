@@ -1,6 +1,6 @@
-package com.entities.domain.dtos;
+package com.recipe.application.domain.dtos;
 
-import com.entities.domain.Difficulty;
+import com.recipe.application.domain.Difficulty;
 import lombok.*;
 
 @Data

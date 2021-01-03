@@ -1,6 +1,6 @@
 package com.recipe.application.services.demo;
 
-import com.entities.domain.Difficulty;
+import com.recipe.application.domain.Difficulty;
 import org.jooq.impl.EnumConverter;
 import org.springframework.stereotype.Component;
 

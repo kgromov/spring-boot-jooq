@@ -1,9 +1,9 @@
 package com.recipe.application.repositories.custom;
 
 
-import com.entities.domain.dtos.CategoryRecipes;
-import guru.springframework.jooq.tables.Category;
-import guru.springframework.jooq.tables.RecipeCategory;
+import com.recipe.application.domain.dtos.CategoryRecipes;
+import com.recipe.application.jooq.tables.Category;
+import com.recipe.application.jooq.tables.RecipeCategory;
 import org.jooq.Record3;
 import org.jooq.SelectHavingStep;
 import org.jooq.impl.DSL;
@@ -12,12 +12,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.entities.domain.Category.CATEGORY_RECIPES_MAPPER;
+import static com.recipe.application.domain.Category.CATEGORY_RECIPES_MAPPER;
 
 /**
  * Here are 3 different ways how to retrieve data with jooq:
  * 1) build query and execute with Hibernate,
- *  mapping with @SqlResultSetMapping specified in {@link com.entities.domain.Category} entity class;
+ *  mapping with @SqlResultSetMapping specified in {@link com.recipe.application.domain.Category} entity class;
  * 2) using {@link org.jooq.ResultQuery#stream()} + map() record -> dto
  *  could be moved to bean; similar to JDBCTemplate mapping
  * 3) execute via jooq fetchInto method.

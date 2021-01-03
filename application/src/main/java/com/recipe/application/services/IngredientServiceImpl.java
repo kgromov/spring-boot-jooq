@@ -1,8 +1,8 @@
 package com.recipe.application.services;
 
 
-import com.entities.domain.Ingredient;
-import com.entities.domain.Recipe;
+import com.recipe.application.domain.Ingredient;
+import com.recipe.application.domain.Recipe;
 import com.recipe.application.commands.IngredientCommand;
 import com.recipe.application.converters.IngredientCommandToIngredient;
 import com.recipe.application.converters.IngredientToIngredientCommand;

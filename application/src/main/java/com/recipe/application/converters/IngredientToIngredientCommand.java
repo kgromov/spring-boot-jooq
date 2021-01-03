@@ -1,6 +1,6 @@
 package com.recipe.application.converters;
 
-import com.entities.domain.Ingredient;
+import com.recipe.application.domain.Ingredient;
 import com.recipe.application.commands.IngredientCommand;
 import lombok.RequiredArgsConstructor;
 import lombok.Synchronized;

@@ -1,7 +1,7 @@
 package com.recipe.application.converters;
 
-import com.entities.domain.Ingredient;
-import com.entities.domain.Recipe;
+import com.recipe.application.domain.Ingredient;
+import com.recipe.application.domain.Recipe;
 import com.recipe.application.commands.IngredientCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;

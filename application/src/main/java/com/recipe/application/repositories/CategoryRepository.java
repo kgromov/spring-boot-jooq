@@ -1,6 +1,6 @@
 package com.recipe.application.repositories;
 
-import com.entities.domain.Category;
+import com.recipe.application.domain.Category;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

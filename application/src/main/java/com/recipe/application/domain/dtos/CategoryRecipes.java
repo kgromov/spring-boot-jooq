@@ -1,4 +1,4 @@
-package com.entities.domain.dtos;
+package com.recipe.application.domain.dtos;
 
 import lombok.*;
 

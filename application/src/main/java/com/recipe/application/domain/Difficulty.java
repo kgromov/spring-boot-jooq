@@ -1,4 +1,4 @@
-package com.entities.domain;
+package com.recipe.application.domain;
 
 /**
  * Created by jt on 6/13/17.

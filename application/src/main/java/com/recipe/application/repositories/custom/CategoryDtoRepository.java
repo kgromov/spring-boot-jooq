@@ -1,6 +1,6 @@
 package com.recipe.application.repositories.custom;
 
-import com.entities.domain.dtos.CategoryRecipes;
+import com.recipe.application.domain.dtos.CategoryRecipes;
 
 import java.util.List;
 

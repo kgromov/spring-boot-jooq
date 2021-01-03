@@ -1,8 +1,8 @@
 package com.recipe.application.converters;
 
 
-import com.entities.domain.Category;
-import com.entities.domain.Recipe;
+import com.recipe.application.domain.Category;
+import com.recipe.application.domain.Recipe;
 import com.recipe.application.commands.RecipeCommand;
 import lombok.RequiredArgsConstructor;
 import lombok.Synchronized;

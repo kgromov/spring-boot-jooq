@@ -1,6 +1,6 @@
-package com.entities.domain;
+package com.recipe.application.domain;
 
-import com.entities.domain.dtos.CategoryRecipes;
+import com.recipe.application.domain.dtos.CategoryRecipes;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Set;
 
-import static com.entities.domain.Category.CATEGORY_RECIPES_MAPPER;
+import static com.recipe.application.domain.Category.CATEGORY_RECIPES_MAPPER;
 
 
 /**

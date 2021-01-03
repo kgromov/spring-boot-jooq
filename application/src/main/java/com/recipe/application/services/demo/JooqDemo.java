@@ -1,8 +1,8 @@
 package com.recipe.application.services.demo;
 
-import com.entities.domain.Difficulty;
-import guru.springframework.jooq.tables.Notes;
-import guru.springframework.jooq.tables.Recipe;
+import com.recipe.application.domain.Difficulty;
+import com.recipe.application.jooq.tables.Notes;
+import com.recipe.application.jooq.tables.Recipe;
 import lombok.extern.slf4j.Slf4j;
 import org.jooq.*;
 import org.jooq.conf.ParamType;
@@ -31,12 +31,12 @@ public class JooqDemo {
         Notes notes = Notes.NOTES;
 
         // AllArgsConstructor is not mandatory for #fetchInto method -seems the same approach as Hibernate - create via empty constructor + setters
-        List<com.entities.domain.Notes> notesList = dsl.selectFrom(notes).fetchInto(com.entities.domain.Notes.class);
+        List<com.recipe.application.domain.Notes> notesList = dsl.selectFrom(notes).fetchInto(com.recipe.application.domain.Notes.class);
         SelectConditionStep<Record> select = dsl.selectFrom(recipe).where(recipe.ID.le(5L));
         List<Object> bindValues = select.getBindValues();
         String sql = select.getSQL();
         String selectSQL = select.getSQL(ParamType.INLINED);
-        List<com.entities.domain.Recipe> recipeList = select.fetchInto(com.entities.domain.Recipe.class);
+        List<com.recipe.application.domain.Recipe> recipeList = select.fetchInto(com.recipe.application.domain.Recipe.class);
 
         List<Difficulty> difficulties = dsl.selectDistinct(recipe.DIFFICULTY)
                 .from(recipe)

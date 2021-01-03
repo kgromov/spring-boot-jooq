@@ -1,6 +1,6 @@
 package com.recipe.application.bootstrap;
 
-import com.entities.domain.*;
+import com.recipe.application.domain.*;
 import com.recipe.application.repositories.CategoryRepository;
 import com.recipe.application.repositories.RecipeRepository;
 import com.recipe.application.repositories.UnitOfMeasureRepository;

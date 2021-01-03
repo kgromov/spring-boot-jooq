@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>guru.springframework</groupId>
-            <artifactId>entities</artifactId>
+            <artifactId>application</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
@@ -42,7 +42,7 @@
                                     <properties>
                                         <property>
                                             <key>packages</key>
-                                            <value>com.entities.domain</value>
+                                            <value>com.recipe.application.domain</value>
                                         </property>
                                         <property>
                                             <key>use-attribute-converters</key>
@@ -57,8 +57,8 @@
                                 </generate>
 
                                 <target>
-                                    <packageName>guru.springframework.jooq</packageName>
-                                    <directory>src/main/java</directory>
+                                    <packageName>com.recipe.application.jooq</packageName>
+                                    <directory>../application/src/main/java</directory>
                                 </target>
                             </generator>
                         </configuration>

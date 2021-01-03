@@ -1,7 +1,7 @@
 package com.recipe.application.repositories.custom;
 
-import com.entities.domain.dtos.RecipeCookTime;
-import com.entities.domain.dtos.RecipeNotes;
+import com.recipe.application.domain.dtos.RecipeCookTime;
+import com.recipe.application.domain.dtos.RecipeNotes;
 
 import java.util.List;
 

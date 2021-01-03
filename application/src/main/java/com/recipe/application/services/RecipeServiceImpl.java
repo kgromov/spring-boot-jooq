@@ -1,9 +1,9 @@
 package com.recipe.application.services;
 
-import com.entities.domain.Recipe;
-import com.entities.domain.dtos.CategoryRecipes;
-import com.entities.domain.dtos.RecipeCookTime;
-import com.entities.domain.dtos.RecipeNotes;
+import com.recipe.application.domain.Recipe;
+import com.recipe.application.domain.dtos.CategoryRecipes;
+import com.recipe.application.domain.dtos.RecipeCookTime;
+import com.recipe.application.domain.dtos.RecipeNotes;
 import com.recipe.application.commands.RecipeCommand;
 import com.recipe.application.converters.RecipeCommandToRecipe;
 import com.recipe.application.converters.RecipeToRecipeCommand;
